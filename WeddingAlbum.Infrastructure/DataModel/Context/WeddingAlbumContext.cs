@@ -35,10 +35,9 @@ namespace WeddingAlbum.Infrastructure.DataModel.Context
             {
                 IConfiguration configuration = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings1.json")
                     .Build();
 
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("WeddingAlbum"));
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"));
             }
         }
 

@@ -98,7 +98,7 @@ namespace WeddingAlbum.Api
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterModule(new DefaultModule(Configuration.GetConnectionString("WeddingAlbum")));
+            builder.RegisterModule(new DefaultModule(Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
         }
     }
 }
