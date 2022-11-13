@@ -62,7 +62,7 @@ namespace WeddingAlbum.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseCors(b => b.WithOrigins(Configuration["AppConfig:ClientUrl"]).AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(b => b.WithOrigins("https://localhost:5002").AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -79,7 +79,7 @@ namespace WeddingAlbum.Api
                 .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(options =>
                 {
-                    options.Authority = Configuration["AppConfig:IdentityUrl"];
+                    options.Authority = "https://localhost:5000";
                     options.RequireHttpsMetadata = true;
                     options.ApiName = Instances.WeddingAlbumApi;
                 });
@@ -94,6 +94,8 @@ namespace WeddingAlbum.Api
             {
                 options.Filters.Add(new AuthorizeFilter(Policies.ApiReader));
             });
+
+
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
