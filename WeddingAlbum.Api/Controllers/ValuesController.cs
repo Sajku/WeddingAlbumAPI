@@ -26,7 +26,7 @@ namespace WeddingAlbum.Api.Controllers
             _commandDispatcher = commandDispatcher;
         }
 
-        [AllowAnonymous]
+        [Authorize(Policy = "user")]
         [HttpGet("samples")]
         public async Task<IActionResult> GetSamples([FromQuery] SampleParameter parameter)
         {

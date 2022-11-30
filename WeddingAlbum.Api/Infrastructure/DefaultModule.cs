@@ -75,6 +75,8 @@ namespace WeddingAlbum.Api.Infrastructure
         private void RegisterServices(ContainerBuilder builder)
         {
             builder.RegisterType<CurrentUserService>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<Encrypter>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<JwtHandler>().AsImplementedInterfaces().InstancePerLifetimeScope();
         }
 
         private static void RegisterControllers(ContainerBuilder builder)

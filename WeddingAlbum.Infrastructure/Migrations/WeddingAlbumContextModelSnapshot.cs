@@ -49,6 +49,28 @@ namespace WeddingAlbum.Infrastructure.Migrations
 
                     b.ToTable("Sample", (string)null);
                 });
+
+            modelBuilder.Entity("WeddingAlbum.Domain.Users.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User", (string)null);
+                });
 #pragma warning restore 612, 618
         }
     }

@@ -11,7 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
-using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace WeddingAlbum.Api
 {
@@ -76,26 +78,27 @@ namespace WeddingAlbum.Api
         public virtual void ConfigureAuth(IServiceCollection services)
         {
             services
-                .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication(options =>
+                .AddAuthentication(o =>
                 {
-                    options.Authority = "https://localhost:5000";
-                    options.RequireHttpsMetadata = true;
-                    options.ApiName = Instances.WeddingAlbumApi;
+                    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                }).AddJwtBearer(o =>
+                {
+                    o.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        IssuerSigningKey = new SymmetricSecurityKey(
+                            Encoding.UTF8.GetBytes("secretJwtKey123_toCupidAPI_WeddingAlbum_qwerty555"))
+                    };
                 });
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(Policies.ApiReader, policy => policy.RequireClaim("scope", Scopes.WeddingAlbumApi));
-                options.AddPolicy(Policies.Consumer, policy => policy.RequireClaim(ClaimTypes.Role, Roles.Consumer));
+                options.AddPolicy("user", policy => policy.RequireRole("user"));
             });
 
-            services.AddMvcCore(options =>
-            {
-                options.Filters.Add(new AuthorizeFilter(Policies.ApiReader));
-            });
-
-
+            services.AddMvcCore();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)

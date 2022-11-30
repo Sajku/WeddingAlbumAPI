@@ -1,6 +1,8 @@
 ﻿using WeddingAlbum.Common.Auth;
 using Microsoft.AspNetCore.Http;
-using IdentityModel;
+using System.IdentityModel.Tokens.Jwt;
+using System;
+using System.Security.Claims;
 
 namespace WeddingAlbum.Api.Infrastructure
 {
@@ -8,7 +10,7 @@ namespace WeddingAlbum.Api.Infrastructure
     {
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            UserId = httpContextAccessor.HttpContext?.User?.FindFirst(JwtClaimTypes.Subject)?.Value;
+            UserId = httpContextAccessor.HttpContext?.User?.Identity.Name;
         }
 
         public string UserId { get; }

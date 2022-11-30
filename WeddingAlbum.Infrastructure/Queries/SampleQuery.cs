@@ -14,8 +14,6 @@ namespace WeddingAlbum.Infrastructure.Queries
 
         public SampleQuery(SqlQueryBuilder sqlQueryBuilder)
         {
-            EnsureArg.IsNotNull(sqlQueryBuilder, nameof(sqlQueryBuilder));
-
             _sqlQueryBuilder = sqlQueryBuilder;
         }
 

@@ -12,8 +12,8 @@ using WeddingAlbum.Infrastructure.DataModel.Context;
 namespace WeddingAlbum.Infrastructure.Migrations
 {
     [DbContext(typeof(WeddingAlbumContext))]
-    [Migration("20221017151619_dbInit")]
-    partial class dbInit
+    [Migration("20221130111225_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,28 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sample", (string)null);
+                });
+
+            modelBuilder.Entity("WeddingAlbum.Domain.Users.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User", (string)null);
                 });
 #pragma warning restore 612, 618
         }
