@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
@@ -11,9 +12,10 @@ using WeddingAlbum.Infrastructure.DataModel.Context;
 namespace WeddingAlbum.Infrastructure.Migrations
 {
     [DbContext(typeof(WeddingAlbumContext))]
-    partial class WeddingAlbumContextModelSnapshot : ModelSnapshot
+    [Migration("20221208192309_AddEventTable")]
+    partial class AddEventTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,31 +23,6 @@ namespace WeddingAlbum.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("WeddingAlbum.Domain.Photos.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Base64")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Photo", (string)null);
-                });
 
             modelBuilder.Entity("WeddingAlbum.Domain.Event.Event", b =>
                 {
@@ -132,17 +109,6 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User", (string)null);
-                });
-
-            modelBuilder.Entity("WeddingAlbum.Domain.Photos.Photo", b =>
-                {
-                    b.HasOne("WeddingAlbum.Domain.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WeddingAlbum.Domain.Event.Event", b =>
