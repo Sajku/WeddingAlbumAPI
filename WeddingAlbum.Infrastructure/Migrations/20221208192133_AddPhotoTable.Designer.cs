@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
@@ -11,9 +12,10 @@ using WeddingAlbum.Infrastructure.DataModel.Context;
 namespace WeddingAlbum.Infrastructure.Migrations
 {
     [DbContext(typeof(WeddingAlbumContext))]
-    partial class WeddingAlbumContextModelSnapshot : ModelSnapshot
+    [Migration("20221208192133_AddPhotoTable")]
+    partial class AddPhotoTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,43 +47,6 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Photo", (string)null);
-                });
-
-            modelBuilder.Entity("WeddingAlbum.Domain.Event.Event", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AdminCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GuestCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Localization")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OwnerUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OwnerUserId");
-
-                    b.ToTable("Event", (string)null);
                 });
 
             modelBuilder.Entity("WeddingAlbum.Domain.Samples.Sample", b =>
@@ -139,17 +104,6 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.HasOne("WeddingAlbum.Domain.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("WeddingAlbum.Domain.Event.Event", b =>
-                {
-                    b.HasOne("WeddingAlbum.Domain.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("OwnerUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
