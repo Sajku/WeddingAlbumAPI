@@ -9,6 +9,7 @@ using WeddingAlbum.Infrastructure.DataModel.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WeddingAlbum.Domain.Users;
+using WeddingAlbum.Domain.Photos;
 
 namespace WeddingAlbum.Infrastructure.DataModel.Context
 {
@@ -25,11 +26,13 @@ namespace WeddingAlbum.Infrastructure.DataModel.Context
 
         public DbSet<Sample> Samples { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Photo> Photos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new SampleConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new PhotoConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
