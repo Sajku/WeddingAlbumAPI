@@ -8,28 +8,28 @@ using WeddingAlbum.PublishedLanguage.Queries;
 namespace WeddingAlbum.Api.Controllers
 {
     [ApiController]
-    public class PhotosController : ControllerBase
+    public class AlbumsController : ControllerBase
     {
         private readonly IQueryDispatcher _queryDispatcher;
         private readonly ICommandDispatcher _commandDispatcher;
 
-        public PhotosController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
+        public AlbumsController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
         {
             _queryDispatcher = queryDispatcher;
             _commandDispatcher = commandDispatcher;
         }
 
         [AllowAnonymous]
-        [HttpGet("photos")]
-        public async Task<IActionResult> GetPhotos([FromQuery] GetPhotosParameter parameter)
+        [HttpGet("albums")]
+        public async Task<IActionResult> GetAlbums([FromQuery] GetAlbumsParameter parameter)
         {
             var response = await _queryDispatcher.Dispatch(parameter);
             return Ok(response);
         }
 
         [AllowAnonymous]
-        [HttpPost("photos")]
-        public async Task<IActionResult> AddPhoto([FromBody] AddPhotoCommand command)
+        [HttpPost("albums")]
+        public async Task<IActionResult> AddAlbum([FromBody] AddAlbumCommand command)
         {
             await _commandDispatcher.Dispatch(command);
             return Ok();
