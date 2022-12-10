@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WeddingAlbum.Domain.Users;
 using WeddingAlbum.Domain.Photos;
-using WeddingAlbum.Domain.Event;
+using WeddingAlbum.Domain.Events;
 
 namespace WeddingAlbum.Infrastructure.DataModel.Context
 {

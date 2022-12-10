@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using WeddingAlbum.ApplicationServices.Boundaries;
-using WeddingAlbum.Domain.Event;
+using WeddingAlbum.Domain.Events;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
 namespace WeddingAlbum.Infrastructure.Domain

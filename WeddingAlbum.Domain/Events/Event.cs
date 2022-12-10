@@ -1,7 +1,7 @@
 ﻿using System;
 using WeddingAlbum.Domain.Users;
 
-namespace WeddingAlbum.Domain.Event
+namespace WeddingAlbum.Domain.Events
 {
     public class Event
     {
