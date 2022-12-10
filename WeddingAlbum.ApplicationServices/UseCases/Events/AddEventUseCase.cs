@@ -2,7 +2,7 @@
 using WeddingAlbum.ApplicationServices.Boundaries;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.Domain;
-using WeddingAlbum.Domain.Event;
+using WeddingAlbum.Domain.Events;
 using WeddingAlbum.PublishedLanguage.Commands;
 
 namespace WeddingAlbum.ApplicationServices.UseCases.Events
