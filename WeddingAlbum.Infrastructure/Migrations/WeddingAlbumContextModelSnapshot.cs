@@ -22,7 +22,7 @@ namespace WeddingAlbum.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("WeddingAlbum.Domain.Album.Album", b =>
+            modelBuilder.Entity("WeddingAlbum.Domain.Albums.Album", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -195,7 +195,7 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("WeddingAlbum.Domain.Album.Album", b =>
+            modelBuilder.Entity("WeddingAlbum.Domain.Albums.Album", b =>
                 {
                     b.HasOne("WeddingAlbum.Domain.Events.Event", "Event")
                         .WithMany()
