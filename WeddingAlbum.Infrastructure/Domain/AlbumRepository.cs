@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeddingAlbum.ApplicationServices.Boundaries;
-using WeddingAlbum.Domain.Album;
+using WeddingAlbum.Domain.Albums;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
 namespace WeddingAlbum.Infrastructure.Domain

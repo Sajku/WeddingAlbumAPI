@@ -2,7 +2,7 @@
 using WeddingAlbum.Domain.Photos;
 using WeddingAlbum.Domain.Users;
 
-namespace WeddingAlbum.Domain.Album
+namespace WeddingAlbum.Domain.Albums
 {
     public class Album
     {

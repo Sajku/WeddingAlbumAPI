@@ -8,7 +8,7 @@ using WeddingAlbum.ApplicationServices.UseCases.Photos;
 using WeddingAlbum.Common.Auth;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.Domain;
-using WeddingAlbum.Domain.Album;
+using WeddingAlbum.Domain.Albums;
 using WeddingAlbum.PublishedLanguage.Commands;
 
 namespace WeddingAlbum.ApplicationServices.UseCases.Albums

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WeddingAlbum.Domain.Album;
+using WeddingAlbum.Domain.Albums;
 
 namespace WeddingAlbum.Infrastructure.DataModel.Mappings
 {

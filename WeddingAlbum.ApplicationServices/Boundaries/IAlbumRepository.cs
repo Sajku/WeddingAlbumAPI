@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using WeddingAlbum.Domain.Album;
+using WeddingAlbum.Domain.Albums;
 
 namespace WeddingAlbum.ApplicationServices.Boundaries
 {

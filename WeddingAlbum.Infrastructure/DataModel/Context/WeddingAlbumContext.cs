@@ -12,7 +12,7 @@ using WeddingAlbum.Domain.Users;
 using WeddingAlbum.Domain.Photos;
 using WeddingAlbum.Domain.Events;
 using WeddingAlbum.Domain.Comments;
-using WeddingAlbum.Domain.Album;
+using WeddingAlbum.Domain.Albums;
 
 namespace WeddingAlbum.Infrastructure.DataModel.Context
 {
