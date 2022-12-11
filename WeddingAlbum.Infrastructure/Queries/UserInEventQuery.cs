@@ -7,20 +7,20 @@ using WeddingAlbum.PublishedLanguage.Queries;
 
 namespace WeddingAlbum.Infrastructure.Queries
 {
-    public class CommentQuery : ICommentQuery
+    public class UserInEventQuery : IUserInEventQuery
     {
         private readonly SqlQueryBuilder _sqlQueryBuilder;
-        public CommentQuery(SqlQueryBuilder sqlQueryBuilder)
+        public UserInEventQuery(SqlQueryBuilder sqlQueryBuilder)
         {
             _sqlQueryBuilder = sqlQueryBuilder;
         }
 
-        public async Task<List<CommentDTO>> GetComments(GetCommentsParameter query)
+        public async Task<List<UserInEventDTO>> GetUserInEvents(GetUserInEventsParameter query)
         {
             return await _sqlQueryBuilder
-                .SelectAllProperties<CommentDTO>()
-                .From("Comment")
-                .BuildQuery<CommentDTO>()
+                .SelectAllProperties<UserInEventDTO>()
+                .From("UserInEvent")
+                .BuildQuery<UserInEventDTO>()
                 .ExecuteToList();
         }
     }

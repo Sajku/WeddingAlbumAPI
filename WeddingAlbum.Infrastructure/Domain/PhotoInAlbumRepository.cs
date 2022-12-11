@@ -1,21 +1,22 @@
 ﻿using System.Threading.Tasks;
 using WeddingAlbum.ApplicationServices.Boundaries;
-using WeddingAlbum.Domain.Comments;
+using WeddingAlbum.Domain.PhotoInAlbums;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
 namespace WeddingAlbum.Infrastructure.Domain
 {
-    public class CommentRepository : ICommentRepository
+    public class PhotoInAlbumRepository : IPhotoInAlbumRepository
     {
         private readonly WeddingAlbumContext _context;
 
-        public CommentRepository(WeddingAlbumContext context)
+        public PhotoInAlbumRepository(WeddingAlbumContext context)
         {
             _context = context;
         }
-        public async Task Add(Comment comment)
+
+        public async Task Add(PhotoInAlbum photoInAlbum)
         {
-            await _context.Comments.AddAsync(comment);
+            await _context.PhotoInAlbums.AddAsync(photoInAlbum);
         }
     }
 }

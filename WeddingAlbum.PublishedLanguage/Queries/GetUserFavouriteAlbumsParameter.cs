@@ -4,7 +4,7 @@ using WeddingAlbum.PublishedLanguage.Dtos;
 
 namespace WeddingAlbum.PublishedLanguage.Queries
 {
-    public class GetCommentsParameter : IQuery<List<CommentDTO>>
+    public class GetUserFavouriteAlbumsParameter : IQuery<List<UserFavouriteAlbumDTO>>
     {
     }
 }

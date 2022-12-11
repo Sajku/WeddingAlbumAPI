@@ -5,8 +5,8 @@ using WeddingAlbum.PublishedLanguage.Queries;
 
 namespace WeddingAlbum.ApplicationServices.Boundaries
 {
-    public interface ICommentQuery
+    public interface IPhotoInAlbumQuery
     {
-        Task<List<CommentDTO>> GetComments(GetCommentsParameter query);
+        Task<List<PhotoInAlbumDTO>> GetPhotoInAlbums(GetPhotoInAlbumsParameter query);
     }
 }

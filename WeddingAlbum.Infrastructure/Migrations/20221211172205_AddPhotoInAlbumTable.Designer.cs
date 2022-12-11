@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
@@ -11,9 +12,10 @@ using WeddingAlbum.Infrastructure.DataModel.Context;
 namespace WeddingAlbum.Infrastructure.Migrations
 {
     [DbContext(typeof(WeddingAlbumContext))]
-    partial class WeddingAlbumContextModelSnapshot : ModelSnapshot
+    [Migration("20221211172205_AddPhotoInAlbumTable")]
+    partial class AddPhotoInAlbumTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,29 +198,6 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.ToTable("Sample", (string)null);
                 });
 
-            modelBuilder.Entity("WeddingAlbum.Domain.UserFavouriteAlbums.UserFavouriteAlbum", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AlbumId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlbumId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserFavouriteAlbum", (string)null);
-                });
-
             modelBuilder.Entity("WeddingAlbum.Domain.UserInEvents.UserInEvent", b =>
                 {
                     b.Property<int>("Id")
@@ -346,24 +325,6 @@ namespace WeddingAlbum.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("WeddingAlbum.Domain.UserFavouriteAlbums.UserFavouriteAlbum", b =>
-                {
-                    b.HasOne("WeddingAlbum.Domain.Albums.Album", "Album")
-                        .WithMany()
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("WeddingAlbum.Domain.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Album");
 
                     b.Navigation("User");
                 });
