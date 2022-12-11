@@ -15,6 +15,7 @@ using WeddingAlbum.Domain.Comments;
 using WeddingAlbum.Domain.Albums;
 using WeddingAlbum.Domain.UserInEvents;
 using WeddingAlbum.Domain.PhotoInAlbums;
+using WeddingAlbum.Domain.UserFavouriteAlbums;
 
 namespace WeddingAlbum.Infrastructure.DataModel.Context
 {
@@ -37,6 +38,7 @@ namespace WeddingAlbum.Infrastructure.DataModel.Context
         public DbSet<Album> Albums { get; set; }
         public DbSet<UserInEvent> UserInEvents { get; set; }
         public DbSet<PhotoInAlbum> PhotoInAlbums { get; set; }
+        public DbSet<UserFavouriteAlbum> UserFavouriteAlbums { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -48,6 +50,7 @@ namespace WeddingAlbum.Infrastructure.DataModel.Context
             builder.ApplyConfiguration(new AlbumConfiguration());
             builder.ApplyConfiguration(new UserInEventConfiguration());
             builder.ApplyConfiguration(new PhotoInAlbumConfiguration());
+            builder.ApplyConfiguration(new UserFavouriteAlbumConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
