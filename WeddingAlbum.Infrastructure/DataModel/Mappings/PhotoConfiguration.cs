@@ -15,7 +15,7 @@ namespace WeddingAlbum.Infrastructure.DataModel.Mappings
                 .HasOne(p => p.User)
                 .WithMany()
                 .HasForeignKey(p => p.UserId)
-                .IsRequired(true);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
