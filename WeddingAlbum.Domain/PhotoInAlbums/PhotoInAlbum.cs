@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WeddingAlbum.Domain.Albums;
+﻿using WeddingAlbum.Domain.Albums;
 using WeddingAlbum.Domain.Photos;
 
 namespace WeddingAlbum.Domain.PhotoInAlbums

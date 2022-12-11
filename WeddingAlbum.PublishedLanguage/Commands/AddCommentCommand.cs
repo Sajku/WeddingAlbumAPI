@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WeddingAlbum.Common.CQRS;
 
 namespace WeddingAlbum.PublishedLanguage.Commands
@@ -11,7 +7,7 @@ namespace WeddingAlbum.PublishedLanguage.Commands
     {
         public string Content { get; set; }
         public DateTime Date { get; set; }
-        public string UserId { get; set; }
+        public string UserId { get; set; } //Temporary
         public int PhotoId { get; set; }
     }
 }

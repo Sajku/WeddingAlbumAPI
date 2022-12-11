@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using WeddingAlbum.Common.Auth;
-using WeddingAlbum.Domain.Common;
-using WeddingAlbum.Domain.Samples;
-using WeddingAlbum.Infrastructure.DataModel.Mappings;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using WeddingAlbum.Domain.Users;
-using WeddingAlbum.Domain.Photos;
-using WeddingAlbum.Domain.Events;
-using WeddingAlbum.Domain.Comments;
 using WeddingAlbum.Domain.Albums;
-using WeddingAlbum.Domain.UserInEvents;
+using WeddingAlbum.Domain.Comments;
+using WeddingAlbum.Domain.Common;
+using WeddingAlbum.Domain.Events;
 using WeddingAlbum.Domain.PhotoInAlbums;
+using WeddingAlbum.Domain.Photos;
+using WeddingAlbum.Domain.Samples;
 using WeddingAlbum.Domain.UserFavouriteAlbums;
+using WeddingAlbum.Domain.UserInEvents;
+using WeddingAlbum.Domain.Users;
+using WeddingAlbum.Infrastructure.DataModel.Mappings;
 
 namespace WeddingAlbum.Infrastructure.DataModel.Context
 {
