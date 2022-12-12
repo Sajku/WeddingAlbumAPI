@@ -14,6 +14,8 @@ using Serilog;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System;
+using Microsoft.OpenApi.Models;
 
 namespace WeddingAlbum.Api
 {
@@ -30,6 +32,12 @@ namespace WeddingAlbum.Api
         {
             services.AddCors();
             services.AddHttpContextAccessor();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cupid API", Version = "v1" });
+            });
+            services.AddControllers();
 
             ConfigureAuth(services);
         }
@@ -57,7 +65,7 @@ namespace WeddingAlbum.Api
             }
 
             app.UseApiSecurityHttpHeaders();
-            app.UseBlockingContentSecurityPolicyHttpHeader();
+            //app.UseBlockingContentSecurityPolicyHttpHeader();
             app.RemoveServerHeader();
             app.UseNoCacheHttpHeaders();
             app.UseStrictTransportSecurityHttpHeader(env);
@@ -72,6 +80,12 @@ namespace WeddingAlbum.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cupid v1");
             });
         }
 
