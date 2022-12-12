@@ -28,6 +28,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Photos
             var photo = new Photo(
                 command.Base64,
                 command.Description,
+                command.Date,
                 command.UserId);
 
             await _photoRepository.Add(photo);
