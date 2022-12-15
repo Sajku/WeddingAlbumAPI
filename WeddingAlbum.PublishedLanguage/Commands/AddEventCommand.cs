@@ -13,8 +13,6 @@ namespace WeddingAlbum.PublishedLanguage.Commands
 
         public DateTime Date { get; set; }
 
-        public string OwnerUserId { get; set; } //Temporary
-
         public string GuestCode { get; set; }
 
         public string AdminCode { get; set; }

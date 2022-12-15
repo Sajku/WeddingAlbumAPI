@@ -5,13 +5,12 @@ namespace WeddingAlbum.Domain.Events
 {
     public class Event
     {
-        public Event(string name, string localization, string description, DateTime date, string ownerUserId, string guestCode, string adminCode)
+        public Event(string name, string localization, string description, DateTime date, string guestCode, string adminCode)
         {
             Name = name;
             Localization = localization;
             Description = description;
             Date = date;
-            OwnerUserId = ownerUserId;
             GuestCode = guestCode;
             AdminCode = adminCode;
         }
@@ -25,10 +24,6 @@ namespace WeddingAlbum.Domain.Events
         public string Description { get; set; }
 
         public DateTime Date { get; set; }
-
-        public string OwnerUserId { get; set; }
-
-        public User User { get; set; }
 
         public string GuestCode { get; set; }
 

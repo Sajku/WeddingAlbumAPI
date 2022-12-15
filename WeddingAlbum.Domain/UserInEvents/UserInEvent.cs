@@ -5,11 +5,12 @@ namespace WeddingAlbum.Domain.UserInEvents
 {
     public class UserInEvent
     {
-        public UserInEvent(string userId, int eventId, bool isAdmin)
+        public UserInEvent(string userId, int eventId, bool isAdmin, bool isOwner)
         {
             UserId = userId;
             EventId = eventId;
             IsAdmin = isAdmin;
+            IsOwner = isOwner;
         }
 
         public int Id { get; set; }
@@ -18,5 +19,6 @@ namespace WeddingAlbum.Domain.UserInEvents
         public int EventId { get; set; }
         public Event Event { get; set; }
         public bool IsAdmin { get; set; }
+        public bool IsOwner { get; set; }
     }
 }
