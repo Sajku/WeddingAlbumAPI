@@ -5,20 +5,20 @@ using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.PublishedLanguage.Dtos;
 using WeddingAlbum.PublishedLanguage.Queries;
 
-namespace WeddingAlbum.ApplicationServices.UseCases.UserFavouriteAlbums
+namespace WeddingAlbum.ApplicationServices.UseCases.Users
 {
     public class GetUserFavouriteAlbumsUseCase : IQueryHandler<GetUserFavouriteAlbumsParameter, List<UserFavouriteAlbumDTO>>
     {
-        private readonly IUserFavouriteAlbumQuery _userFavouriteAlbumQuery;
+        private readonly IUserQuery _userQuery;
 
-        public GetUserFavouriteAlbumsUseCase(IUserFavouriteAlbumQuery userFavouriteAlbumQuery)
+        public GetUserFavouriteAlbumsUseCase(IUserQuery userQuery)
         {
-            _userFavouriteAlbumQuery = userFavouriteAlbumQuery;
+            _userQuery = userQuery;
         }
 
         public async Task<List<UserFavouriteAlbumDTO>> Handle(GetUserFavouriteAlbumsParameter query)
         {
-            return await _userFavouriteAlbumQuery.GetUserFavouriteAlbums(query);
+            return await _userQuery.GetUserFavouriteAlbums(query);
         }
     }
 }

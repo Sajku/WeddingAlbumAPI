@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EnsureThat;
 using WeddingAlbum.ApplicationServices.Boundaries;
 using WeddingAlbum.Domain.Users;
 using WeddingAlbum.Infrastructure.QueryBuilder;
+using WeddingAlbum.PublishedLanguage.Dtos;
+using WeddingAlbum.PublishedLanguage.Queries;
 
 namespace WeddingAlbum.Infrastructure.Queries
 {
@@ -24,6 +27,24 @@ namespace WeddingAlbum.Infrastructure.Queries
                 .Where("Id", id)
                 .BuildQuery<User>()
                 .ExecuteToFirstElement();
+        }
+
+        public async Task<List<UserFavouriteAlbumDTO>> GetUserFavouriteAlbums(GetUserFavouriteAlbumsParameter query)
+        {
+            return await _sqlQueryBuilder
+                .SelectAllProperties<UserFavouriteAlbumDTO>()
+                .From("UserFavouriteAlbum")
+                .BuildQuery<UserFavouriteAlbumDTO>()
+                .ExecuteToList();
+        }
+
+        public async Task<List<UserInEventDTO>> GetUserInEvents(GetUserInEventsParameter query)
+        {
+            return await _sqlQueryBuilder
+                .SelectAllProperties<UserInEventDTO>()
+                .From("UserInEvent")
+                .BuildQuery<UserInEventDTO>()
+                .ExecuteToList();
         }
     }
 }

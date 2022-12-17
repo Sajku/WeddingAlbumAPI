@@ -5,16 +5,16 @@ using WeddingAlbum.Domain;
 using WeddingAlbum.Domain.UserInEvents;
 using WeddingAlbum.PublishedLanguage.Commands;
 
-namespace WeddingAlbum.ApplicationServices.UseCases.UserInEvents
+namespace WeddingAlbum.ApplicationServices.UseCases.Users
 {
     public class AddUserInEventUseCase : ICommandHandler<AddUserInEventCommand>
     {
-        private readonly IUserInEventRepository _userInEventRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AddUserInEventUseCase(IUserInEventRepository userInEventRepository, IUnitOfWork unitOfWork)
+        public AddUserInEventUseCase(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
-            _userInEventRepository = userInEventRepository;
+            _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -24,7 +24,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.UserInEvents
                 command.UserId,
                 command.EventId,
                 command.IsAdmin);
-            await _userInEventRepository.Add(userInEvent);
+            await _userRepository.Add(userInEvent);
             await _unitOfWork.Save();
         }
     }

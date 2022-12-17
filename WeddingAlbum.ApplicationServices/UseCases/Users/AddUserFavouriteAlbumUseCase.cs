@@ -5,16 +5,16 @@ using WeddingAlbum.Domain;
 using WeddingAlbum.Domain.UserFavouriteAlbums;
 using WeddingAlbum.PublishedLanguage.Commands;
 
-namespace WeddingAlbum.ApplicationServices.UseCases.UserFavouriteAlbums
+namespace WeddingAlbum.ApplicationServices.UseCases.Users
 {
     public class AddUserFavouriteAlbumUseCase : ICommandHandler<AddUserFavouriteAlbumCommand>
     {
-        private readonly IUserFavouriteAlbumRepository _userFavouriteAlbumRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AddUserFavouriteAlbumUseCase(IUserFavouriteAlbumRepository userFavouriteAlbumRepository, IUnitOfWork unitOfWork)
+        public AddUserFavouriteAlbumUseCase(IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
-            _userFavouriteAlbumRepository = userFavouriteAlbumRepository;
+            _userRepository = userRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -23,7 +23,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.UserFavouriteAlbums
             var userFavouriteAlbum = new UserFavouriteAlbum(
                 command.UserId,
                 command.AlbumId);
-            await _userFavouriteAlbumRepository.Add(userFavouriteAlbum);
+            await _userRepository.Add(userFavouriteAlbum);
             await _unitOfWork.Save();
         }
     }

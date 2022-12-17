@@ -14,6 +14,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using WeddingAlbum.Api.Controllers;
 using Module = Autofac.Module;
+using WeddingAlbum.ApplicationServices.UseCases.Photos;
 
 namespace WeddingAlbum.Api.Infrastructure
 {
@@ -83,7 +84,7 @@ namespace WeddingAlbum.Api.Infrastructure
         {
             RegisterTransientDependenciesAutomatically(
                 builder,
-                typeof(ValuesController).Assembly,
+                typeof(UsersController).Assembly,
                 "WeddingAlbum.Api.Controllers");
         }
 
@@ -91,7 +92,7 @@ namespace WeddingAlbum.Api.Infrastructure
         {
             RegisterTransientDependenciesAutomatically(
                 builder,
-                typeof(GetSampleUseCase).Assembly,
+                typeof(GetPhotosUseCase).Assembly,
                 "WeddingAlbum.ApplicationServices.UseCases");
         }
 
@@ -99,7 +100,7 @@ namespace WeddingAlbum.Api.Infrastructure
         {
             RegisterTransientDependenciesAutomatically(
                 builder,
-                typeof(SampleQuery).Assembly,
+                typeof(UserQuery).Assembly,
                 "WeddingAlbum.Infrastructure.Queries");
         }
 
@@ -107,7 +108,7 @@ namespace WeddingAlbum.Api.Infrastructure
         {
             RegisterTransientDependenciesAutomatically(
                 builder,
-                typeof(SampleRepository).Assembly,
+                typeof(UserRepository).Assembly,
                 "WeddingAlbum.Infrastructure.Domain");
         }
     }

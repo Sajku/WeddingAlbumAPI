@@ -8,5 +8,7 @@ namespace WeddingAlbum.ApplicationServices.Boundaries
     public interface IPhotoQuery
     {
         Task<List<PhotoDTO>> GetPhotos(GetPhotosParameter query);
+
+        Task<List<PhotoInAlbumDTO>> GetPhotoInAlbums(GetPhotoInAlbumParameter query);
     }
 }

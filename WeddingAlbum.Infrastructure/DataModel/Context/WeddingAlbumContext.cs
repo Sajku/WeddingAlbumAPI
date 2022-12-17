@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using WeddingAlbum.Common.Auth;
 using WeddingAlbum.Domain.Albums;
 using WeddingAlbum.Domain.Comments;
@@ -11,7 +11,6 @@ using WeddingAlbum.Domain.Common;
 using WeddingAlbum.Domain.Events;
 using WeddingAlbum.Domain.PhotoInAlbums;
 using WeddingAlbum.Domain.Photos;
-using WeddingAlbum.Domain.Samples;
 using WeddingAlbum.Domain.UserFavouriteAlbums;
 using WeddingAlbum.Domain.UserInEvents;
 using WeddingAlbum.Domain.Users;
@@ -30,7 +29,6 @@ namespace WeddingAlbum.Infrastructure.DataModel.Context
             _currentUserService = currentUserService;
         }
 
-        public DbSet<Sample> Samples { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Event> Events { get; set; }
@@ -42,7 +40,6 @@ namespace WeddingAlbum.Infrastructure.DataModel.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new SampleConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new PhotoConfiguration());
             builder.ApplyConfiguration(new EventConfiguration());

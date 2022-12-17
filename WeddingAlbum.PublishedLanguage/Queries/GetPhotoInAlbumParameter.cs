@@ -4,7 +4,7 @@ using WeddingAlbum.PublishedLanguage.Dtos;
 
 namespace WeddingAlbum.PublishedLanguage.Queries
 {
-    public class GetPhotoInAlbumsParameter : IQuery<List<PhotoInAlbumDTO>>
+    public class GetPhotoInAlbumParameter : IQuery<List<PhotoInAlbumDTO>>
     {
     }
 }

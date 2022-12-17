@@ -34,5 +34,41 @@ namespace WeddingAlbum.Api.Controllers
         {
             return Ok(await _queryDispatcher.Dispatch(parameter));
         }
+
+
+
+        [AllowAnonymous]
+        [HttpGet("users/events")]
+        public async Task<IActionResult> GetUserInEvents([FromQuery] GetUserInEventsParameter parameter)
+        {
+            var response = await _queryDispatcher.Dispatch(parameter);
+            return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("users/events")]
+        public async Task<IActionResult> AddUserInEvent([FromBody] AddUserInEventCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
+
+
+
+        [AllowAnonymous]
+        [HttpGet("users/albums")]
+        public async Task<IActionResult> GetUserFavouriteAlbums([FromQuery] GetUserFavouriteAlbumsParameter parameter)
+        {
+            var response = await _queryDispatcher.Dispatch(parameter);
+            return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("users/albums")]
+        public async Task<IActionResult> AddUserFavouriteAlbum([FromBody] AddUserFavouriteAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
     }
 }

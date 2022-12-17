@@ -5,16 +5,16 @@ using WeddingAlbum.Domain;
 using WeddingAlbum.Domain.PhotoInAlbums;
 using WeddingAlbum.PublishedLanguage.Commands;
 
-namespace WeddingAlbum.ApplicationServices.UseCases.PhotoInAlbums
+namespace WeddingAlbum.ApplicationServices.UseCases.Photos
 {
     public class AddPhotoInAlbumUseCase : ICommandHandler<AddPhotoInAlbumCommand>
     {
-        private readonly IPhotoInAlbumRepository _photoInAlbumRepository;
+        private readonly IPhotoRepository _photoRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AddPhotoInAlbumUseCase(IPhotoInAlbumRepository photoInAlbumRepository, IUnitOfWork unitOfWork)
+        public AddPhotoInAlbumUseCase(IPhotoRepository photoRepository, IUnitOfWork unitOfWork)
         {
-            _photoInAlbumRepository = photoInAlbumRepository;
+            _photoRepository = photoRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -23,7 +23,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.PhotoInAlbums
             var photoInAlbum = new PhotoInAlbum(
                 command.AlbumId,
                 command.PhotoId);
-            await _photoInAlbumRepository.Add(photoInAlbum);
+            await _photoRepository.Add(photoInAlbum);
             await _unitOfWork.Save();
         }
     }

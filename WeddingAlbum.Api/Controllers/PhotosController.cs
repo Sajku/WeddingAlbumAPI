@@ -34,5 +34,23 @@ namespace WeddingAlbum.Api.Controllers
             await _commandDispatcher.Dispatch(command);
             return Ok();
         }
+
+
+
+        [AllowAnonymous]
+        [HttpGet("photos/albums")]
+        public async Task<IActionResult> GetPhotoInAlbum([FromQuery] GetPhotoInAlbumParameter parameter)
+        {
+            var response = await _queryDispatcher.Dispatch(parameter);
+            return Ok(response);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("photos/albums")]
+        public async Task<IActionResult> AddPhotoInAlbum([FromBody] AddPhotoInAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
     }
 }

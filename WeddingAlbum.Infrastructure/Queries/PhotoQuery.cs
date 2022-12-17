@@ -24,5 +24,14 @@ namespace WeddingAlbum.Infrastructure.Queries
                 .BuildQuery<PhotoDTO>()
                 .ExecuteToList();
         }
+
+        public async Task<List<PhotoInAlbumDTO>> GetPhotoInAlbums(GetPhotoInAlbumParameter query)
+        {
+            return await _sqlQueryBuilder
+                .SelectAllProperties<PhotoInAlbumDTO>()
+                .From("PhotoInAlbum")
+                .BuildQuery<PhotoInAlbumDTO>()
+                .ExecuteToList();
+        }
     }
 }
