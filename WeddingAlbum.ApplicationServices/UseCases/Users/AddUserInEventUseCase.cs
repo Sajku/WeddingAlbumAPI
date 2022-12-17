@@ -23,7 +23,8 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
             var userInEvent = new UserInEvent(
                 command.UserId,
                 command.EventId,
-                command.IsAdmin);
+                command.IsAdmin,
+                command.IsOnwer);
             await _userRepository.Add(userInEvent);
             await _unitOfWork.Save();
         }

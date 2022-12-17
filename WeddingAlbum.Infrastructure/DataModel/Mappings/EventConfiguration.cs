@@ -10,12 +10,6 @@ namespace WeddingAlbum.Infrastructure.DataModel.Mappings
         {
             builder.ToTable("Event");
             builder.HasKey(e => e.Id);
-
-            builder
-                .HasOne(p => p.User)
-                .WithMany()
-                .HasForeignKey(p => p.OwnerUserId)
-                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

@@ -25,7 +25,6 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Events
                 command.Localization,
                 command.Description,
                 command.Date,
-                command.OwnerUserId,
                 command.GuestCode,
                 command.AdminCode);
             await _eventRepository.Add(e);

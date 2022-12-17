@@ -14,8 +14,6 @@ namespace WeddingAlbum.PublishedLanguage.Dtos
 
         public DateTime Date { get; set; }
 
-        public string OwnerUserId { get; set; }
-
         public string GuestCode { get; set; }
 
         public string AdminCode { get; }
