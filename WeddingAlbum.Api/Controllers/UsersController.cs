@@ -38,7 +38,7 @@ namespace WeddingAlbum.Api.Controllers
 
 
         [AllowAnonymous]
-        [HttpGet("users/events")]
+        [HttpGet("users/events/all")]
         public async Task<IActionResult> GetUserInEvents([FromQuery] GetUserInEventsParameter parameter)
         {
             var response = await _queryDispatcher.Dispatch(parameter);
@@ -53,10 +53,17 @@ namespace WeddingAlbum.Api.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
+        [HttpGet("users/events")]
+        public async Task<IActionResult> GetUserEvents([FromQuery] GetUserEventsParameter parameter)
+        {
+            return Ok(await _queryDispatcher.Dispatch(parameter));
+        }
+
 
 
         [AllowAnonymous]
-        [HttpGet("users/albums")]
+        [HttpGet("users/albums/all")]
         public async Task<IActionResult> GetUserFavouriteAlbums([FromQuery] GetUserFavouriteAlbumsParameter parameter)
         {
             var response = await _queryDispatcher.Dispatch(parameter);

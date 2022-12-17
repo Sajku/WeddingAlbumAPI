@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeddingAlbum.PublishedLangu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeddingAlbum.Api", "WeddingAlbum.Api\WeddingAlbum.Api.csproj", "{6CDCE7E8-2F9B-42BB-9150-17DB8B8C3EF0}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database.Scripts", "Database.Scripts\Database.Scripts.sqlproj", "{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,12 @@ Global
 		{6CDCE7E8-2F9B-42BB-9150-17DB8B8C3EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CDCE7E8-2F9B-42BB-9150-17DB8B8C3EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CDCE7E8-2F9B-42BB-9150-17DB8B8C3EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B941A6-035C-4D55-96FD-BA40FABAA1E8}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,7 @@ namespace WeddingAlbum.ApplicationServices.Boundaries
         Task<User> GetUserById(string id);
 
         Task<List<UserInEventDTO>> GetUserInEvents(GetUserInEventsParameter query);
+        Task<List<UserEventDTO>> GetUserEvents(GetUserEventsParameter query);
 
         Task<List<UserFavouriteAlbumDTO>> GetUserFavouriteAlbums(GetUserFavouriteAlbumsParameter query);
     }

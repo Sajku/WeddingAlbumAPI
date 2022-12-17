@@ -46,5 +46,16 @@ namespace WeddingAlbum.Infrastructure.Queries
                 .BuildQuery<UserInEventDTO>()
                 .ExecuteToList();
         }
+
+
+        public async Task<List<UserEventDTO>> GetUserEvents(GetUserEventsParameter query)
+        {
+            return await _sqlQueryBuilder
+                .SelectAllProperties<UserEventDTO>()
+                .From("VW_UserEvents")
+                .Where("UserId", query.UserId)
+                .BuildQuery<UserEventDTO>()
+                .ExecuteToList();
+        }
     }
 }

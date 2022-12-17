@@ -24,7 +24,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
                 command.UserId,
                 command.EventId,
                 command.IsAdmin,
-                command.IsOnwer);
+                command.IsOwner);
             await _userRepository.Add(userInEvent);
             await _unitOfWork.Save();
         }
