@@ -66,4 +66,7 @@
     <PostDeploy Include="Views\__view-list.sql" />
     <None Include="Views\VW_UserEvents.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\VW_PhotoComments.sql" />
+  </ItemGroup>
 </Project>

@@ -52,5 +52,15 @@ namespace WeddingAlbum.Api.Controllers
             await _commandDispatcher.Dispatch(command);
             return Ok();
         }
+
+
+        [AllowAnonymous]
+        [HttpGet("photos/{photoId}/comments")]
+        public async Task<IActionResult> GetPhotoComments([FromRoute] int photoId, [FromQuery] GetPhotoCommentsParameter parameter)
+        {
+            parameter.PhotoId = photoId;
+            var response = await _queryDispatcher.Dispatch(parameter);
+            return Ok(response);
+        }
     }
 }
