@@ -5,7 +5,7 @@ using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.PublishedLanguage.Dtos;
 using WeddingAlbum.PublishedLanguage.Queries;
 
-namespace WeddingAlbum.ApplicationServices.UseCases.UserInEvents
+namespace WeddingAlbum.ApplicationServices.UseCases.Users
 {
     public class GetUserEventsUseCase : IQueryHandler<GetUserEventsParameter, List<UserEventDTO>>
     {

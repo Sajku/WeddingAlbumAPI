@@ -23,6 +23,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Comments
             var c = new Comment(
                 command.Content,
                 command.Date,
+                command.LikesCount,
                 command.UserId,
                 command.PhotoId);
             await _commentRepository.Add(c);

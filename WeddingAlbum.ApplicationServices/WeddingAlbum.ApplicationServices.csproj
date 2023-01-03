@@ -16,4 +16,8 @@
 		<ProjectReference Include="..\WeddingAlbum.PublishedLanguage\WeddingAlbum.PublishedLanguage.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="UseCases\UserInEvents\" />
+	</ItemGroup>
+
 </Project>

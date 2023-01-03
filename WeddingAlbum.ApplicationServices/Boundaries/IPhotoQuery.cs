@@ -10,5 +10,7 @@ namespace WeddingAlbum.ApplicationServices.Boundaries
         Task<List<PhotoDTO>> GetPhotos(GetPhotosParameter query);
 
         Task<List<PhotoInAlbumDTO>> GetPhotoInAlbums(GetPhotoInAlbumParameter query);
+
+        Task<List<PhotoCommentDTO>> GetPhotoComments(GetPhotoCommentsParameter query);
     }
 }
