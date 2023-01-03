@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.PublishedLanguage.Dtos;
 
@@ -10,6 +6,6 @@ namespace WeddingAlbum.PublishedLanguage.Queries
 {
     public class GetPhotoCommentsParameter : IQuery<List<PhotoCommentDTO>>
     {
-        public int PhotoId { get; set; } 
+        public int PhotoId { get; set; }
     }
 }

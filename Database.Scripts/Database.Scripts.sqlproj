@@ -69,4 +69,19 @@
   <ItemGroup>
     <None Include="Views\VW_PhotoComments.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\VW_PhotoDetails.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\VW_FavAlbumsInEvent.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\VW_AlbumsPhotosNumber.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\VW_EventAlbums.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\VW_AlbumsPhotos.sql" />
+  </ItemGroup>
 </Project>

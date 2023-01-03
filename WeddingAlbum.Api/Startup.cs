@@ -1,21 +1,17 @@
-﻿using System.Security.Claims;
+﻿using System.Text;
 using Autofac;
-using WeddingAlbum.Api.Infrastructure;
-using WeddingAlbum.Common.Auth;
-using WeddingAlbum.Common.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Serilog;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using WeddingAlbum.Api.Infrastructure;
+using WeddingAlbum.Common.Configuration;
 
 namespace WeddingAlbum.Api
 {
@@ -35,6 +31,7 @@ namespace WeddingAlbum.Api
 
             services.AddSwaggerGen(c =>
             {
+                c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cupid API", Version = "v1" });
             });
             services.AddControllers();

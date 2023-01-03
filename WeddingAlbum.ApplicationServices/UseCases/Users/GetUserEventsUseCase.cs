@@ -11,7 +11,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
     {
         private readonly IUserQuery _userQuery;
 
-        public GetUserEventsUseCase(IEventQuery eventQuery, IUserQuery userInEventQuery)
+        public GetUserEventsUseCase(IUserQuery userInEventQuery)
         {
             _userQuery = userInEventQuery;
         }

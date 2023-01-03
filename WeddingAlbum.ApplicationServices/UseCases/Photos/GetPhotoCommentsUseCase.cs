@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using WeddingAlbum.ApplicationServices.Boundaries;
 using WeddingAlbum.Common.CQRS;
@@ -13,7 +10,8 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Photos
     public class GetPhotoCommentsUseCase : IQueryHandler<GetPhotoCommentsParameter, List<PhotoCommentDTO>>
     {
         private readonly IPhotoQuery _photoQuery;
-        public GetPhotoCommentsUseCase(ICommentQuery commentQuery, IPhotoQuery photoCommentQuery)
+
+        public GetPhotoCommentsUseCase(IPhotoQuery photoCommentQuery)
         {
             _photoQuery = photoCommentQuery;
         }

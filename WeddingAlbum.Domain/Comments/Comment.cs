@@ -6,11 +6,11 @@ namespace WeddingAlbum.Domain.Comments
 {
     public class Comment
     {
-        public Comment(string content, DateTime date, int likesCount, string userId, int photoId)
+        public Comment(string content, DateTime date, string userId, int photoId)
         {
             Content = content;
             Date = date;
-            LikesCount = likesCount;
+            LikesCount = 0;
             UserId = userId;
             PhotoId = photoId;
         }

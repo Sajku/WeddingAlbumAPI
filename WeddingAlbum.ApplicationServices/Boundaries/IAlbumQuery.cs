@@ -8,5 +8,6 @@ namespace WeddingAlbum.ApplicationServices.Boundaries
     public interface IAlbumQuery
     {
         Task<List<AlbumDTO>> GetAlbums(GetAlbumsParameter query);
+        Task<List<ShortPhotoDTO>> GetAlbumPhotos(GetAlbumPhotosParameter query);
     }
 }

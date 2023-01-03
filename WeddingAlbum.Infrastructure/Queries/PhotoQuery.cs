@@ -34,6 +34,16 @@ namespace WeddingAlbum.Infrastructure.Queries
                 .ExecuteToList();
         }
 
+        public async Task<PhotoDetailsDTO> GetPhotoDetails(GetPhotoDetailsParameter query)
+        {
+            return await _sqlQueryBuilder
+                .SelectAllProperties<PhotoDetailsDTO>()
+                .From("VW_PhotoDetails")
+                .Where("Id", query.PhotoId)
+                .BuildQuery<PhotoDetailsDTO>()
+                .ExecuteToFirstElement();
+        }
+
         public async Task<List<PhotoCommentDTO>> GetPhotoComments(GetPhotoCommentsParameter query)
         {
             return await _sqlQueryBuilder

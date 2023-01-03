@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WeddingAlbum.ApplicationServices.Boundaries;
 using WeddingAlbum.Common.Auth;
 using WeddingAlbum.Common.CQRS;
-using WeddingAlbum.Domain;
-using WeddingAlbum.PublishedLanguage.Commands;
 using WeddingAlbum.PublishedLanguage.Queries;
 
 namespace WeddingAlbum.ApplicationServices.UseCases.Users
@@ -30,9 +25,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
 
         public async Task<JwtDTO> Handle(LoginUserParameter parameter)
         {
-
-            var token = _jwtHandler.CreateToken(parameter.Id, "user");
-            var user = await _userQuery.GetUserById(parameter.Id);
+            var user = await _userQuery.GetUserByLogin(parameter.Login);
             if (user == null)
             {
                 return null;
@@ -41,6 +34,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
 
             if (user.Hash == hash)
             {
+                var token = _jwtHandler.CreateToken(user.Id, "user");
                 return token;
             }
             throw new Exception("Invalid credentials");

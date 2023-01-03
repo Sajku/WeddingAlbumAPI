@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.PublishedLanguage.Commands;
 using WeddingAlbum.PublishedLanguage.Queries;
@@ -19,14 +20,16 @@ namespace WeddingAlbum.Api.Controllers
             _commandDispatcher = commandDispatcher;
         }
 
+        [SwaggerOperation(Summary = "ZWRACA ZDJĘCIA W ALBUMIE", Description = "description")]
         [AllowAnonymous]
-        [HttpGet("albums")]
-        public async Task<IActionResult> GetAlbums([FromQuery] GetAlbumsParameter parameter)
+        [HttpGet("albums/{albumId}/photos")]
+        public async Task<IActionResult> GetAlbumPhotos([FromRoute] int albumId, [FromQuery] GetAlbumPhotosParameter parameter)
         {
-            var response = await _queryDispatcher.Dispatch(parameter);
-            return Ok(response);
+            parameter.AlbumId = albumId;
+            return Ok(await _queryDispatcher.Dispatch(parameter));
         }
 
+        [SwaggerOperation(Summary = "DODAJE NOWY ALBUM", Description = "description")]
         [AllowAnonymous]
         [HttpPost("albums")]
         public async Task<IActionResult> AddAlbum([FromBody] AddAlbumCommand command)

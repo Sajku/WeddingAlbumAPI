@@ -7,7 +7,6 @@ namespace WeddingAlbum.PublishedLanguage.Commands
     {
         public string Content { get; set; }
         public DateTime Date { get; set; }
-        public int LikesCount { get; set; }
         public string UserId { get; set; } //Temporary
         public int PhotoId { get; set; }
     }

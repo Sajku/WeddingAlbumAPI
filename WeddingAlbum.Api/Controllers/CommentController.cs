@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+using Swashbuckle.AspNetCore.Annotations;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.PublishedLanguage.Commands;
-using WeddingAlbum.PublishedLanguage.Queries;
 
 namespace WeddingAlbum.Api.Controllers
 {
@@ -19,17 +19,10 @@ namespace WeddingAlbum.Api.Controllers
             _commandDispatcher = commandDispatcher;
         }
 
-        [AllowAnonymous]
-        [HttpGet("comments")]
-        public async Task<IActionResult> GetComments([FromQuery] GetCommentsParameter parameter)
-        {
-            var response = await _queryDispatcher.Dispatch(parameter);
-            return Ok(response);
-        }
-
+        [SwaggerOperation(Summary = "DODAJE NOWY KOMENTARZ DO ZDJĘCIA", Description = "description")]
         [AllowAnonymous]
         [HttpPost("comments")]
-        public async Task<IActionResult> AddEvent([FromBody] AddCommentCommand command)
+        public async Task<IActionResult> AddComment([FromBody] AddCommentCommand command)
         {
             await _commandDispatcher.Dispatch(command);
             return Ok();
