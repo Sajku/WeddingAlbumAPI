@@ -32,6 +32,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
             var user = new User(
                 command.FirstName,
                 command.LastName,
+                command.Login,
                 salt,
                 hash);
 

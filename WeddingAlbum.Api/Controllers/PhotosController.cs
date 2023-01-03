@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.PublishedLanguage.Commands;
 using WeddingAlbum.PublishedLanguage.Queries;
@@ -19,14 +20,27 @@ namespace WeddingAlbum.Api.Controllers
             _commandDispatcher = commandDispatcher;
         }
 
+        [SwaggerOperation(Summary = "ZWRACA SZCZEGÓŁY ZDJĘCIA", Description = "description")]
         [AllowAnonymous]
-        [HttpGet("photos")]
-        public async Task<IActionResult> GetPhotos([FromQuery] GetPhotosParameter parameter)
+        [HttpGet("photos/{photoId}")]
+        public async Task<IActionResult> GetPhotoDetails([FromRoute] int photoId, [FromQuery] GetPhotoDetailsParameter parameter)
         {
+            parameter.PhotoId = photoId;
             var response = await _queryDispatcher.Dispatch(parameter);
             return Ok(response);
         }
 
+        [SwaggerOperation(Summary = "ZWRACA KOMENTARZE ZDJĘCIA", Description = "description")]
+        [AllowAnonymous]
+        [HttpGet("photos/{photoId}/comments")]
+        public async Task<IActionResult> GetPhotoComments([FromRoute] int photoId, [FromQuery] GetPhotoCommentsParameter parameter)
+        {
+            parameter.PhotoId = photoId;
+            var response = await _queryDispatcher.Dispatch(parameter);
+            return Ok(response);
+        }
+
+        [SwaggerOperation(Summary = "DODAJE ZDJĘCIE ZROBIONE PRZEZ USERA", Description = "description")]
         [AllowAnonymous]
         [HttpPost("photos")]
         public async Task<IActionResult> AddPhoto([FromBody] AddPhotoCommand command)
@@ -35,32 +49,13 @@ namespace WeddingAlbum.Api.Controllers
             return Ok();
         }
 
-
-
-        [AllowAnonymous]
-        [HttpGet("photos/albums")]
-        public async Task<IActionResult> GetPhotoInAlbum([FromQuery] GetPhotoInAlbumParameter parameter)
-        {
-            var response = await _queryDispatcher.Dispatch(parameter);
-            return Ok(response);
-        }
-
+        [SwaggerOperation(Summary = "DODAJE ZDJĘCIE DO ALBUMU", Description = "description")]
         [AllowAnonymous]
         [HttpPost("photos/albums")]
         public async Task<IActionResult> AddPhotoInAlbum([FromBody] AddPhotoInAlbumCommand command)
         {
             await _commandDispatcher.Dispatch(command);
             return Ok();
-        }
-
-
-        [AllowAnonymous]
-        [HttpGet("photos/{photoId}/comments")]
-        public async Task<IActionResult> GetPhotoComments([FromRoute] int photoId, [FromQuery] GetPhotoCommentsParameter parameter)
-        {
-            parameter.PhotoId = photoId;
-            var response = await _queryDispatcher.Dispatch(parameter);
-            return Ok(response);
         }
     }
 }

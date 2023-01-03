@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WeddingAlbum.ApplicationServices.Boundaries;
+using WeddingAlbum.Domain.Albums;
 using WeddingAlbum.Domain.UserFavouriteAlbums;
 using WeddingAlbum.Domain.UserInEvents;
 using WeddingAlbum.Domain.Users;
@@ -29,6 +30,12 @@ namespace WeddingAlbum.Infrastructure.Domain
                 .SingleOrDefaultAsync(u => u.Id == id);
         }
 
+        public async Task<UserFavouriteAlbum> GetUserFavouriteAlbum(string userId, int id)
+        {
+            return await _context.UserFavouriteAlbums
+                .SingleOrDefaultAsync(a => a.AlbumId == id && a.UserId == userId);
+        }
+
         public async Task Add(UserInEvent userInEvent)
         {
             await _context.UserInEvents.AddAsync(userInEvent);
@@ -37,6 +44,12 @@ namespace WeddingAlbum.Infrastructure.Domain
         public async Task Add(UserFavouriteAlbum userFavouriteAlbum)
         {
             await _context.UserFavouriteAlbums.AddAsync(userFavouriteAlbum);
+        }
+
+        public void DeleteUserFavouriteAlbum(UserFavouriteAlbum album)
+        {
+            _context.UserFavouriteAlbums.Remove(album);
+            _context.SaveChanges();
         }
     }
 }

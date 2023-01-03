@@ -5,7 +5,7 @@ namespace WeddingAlbum.PublishedLanguage.Queries
 {
     public class LoginUserParameter : IQuery<JwtDTO>
     {
-        public string Id { get; set; }
+        public string Login { get; set; }
         public string Password { get; set; }
     }
 }
