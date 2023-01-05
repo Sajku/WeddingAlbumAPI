@@ -30,14 +30,13 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
 
         public async Task Handle(AddUserInEventByCodeCommand command)
         {
-            //var userId = _currentUserService.UserId;
-            var userId = command.UserId;
+            command.UserId ??= _currentUserService.UserId;
             var result = await _eventRepository.CheckCode(command.Code);
 
             if (result.Id != 0)
             {
                 var userInEvent = new UserInEvent(
-                userId,
+                command.UserId,
                 result.Id,
                 !result.IsGuest,
                 false);

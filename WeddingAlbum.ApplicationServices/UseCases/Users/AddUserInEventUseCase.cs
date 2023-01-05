@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using WeddingAlbum.ApplicationServices.Boundaries;
+using WeddingAlbum.Common.Auth;
 using WeddingAlbum.Common.CQRS;
 using WeddingAlbum.Domain;
 using WeddingAlbum.Domain.UserInEvents;
@@ -11,15 +12,19 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
     {
         private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICurrentUserService _currentUserService;
 
-        public AddUserInEventUseCase(IUserRepository userRepository, IUnitOfWork unitOfWork)
+        public AddUserInEventUseCase(IUserRepository userRepository, IUnitOfWork unitOfWork, ICurrentUserService currentUserService)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
+            _currentUserService = currentUserService;
         }
 
         public async Task Handle(AddUserInEventCommand command)
         {
+            command.UserId ??= _currentUserService.UserId;
+
             var userInEvent = new UserInEvent(
                 command.UserId,
                 command.EventId,

@@ -57,5 +57,24 @@ namespace WeddingAlbum.Api.Controllers
             await _commandDispatcher.Dispatch(command);
             return Ok();
         }
+
+        [SwaggerOperation(Summary = "USUWA ZDJĘCIE Z ALBUMU", Description = "description")]
+        [AllowAnonymous]
+        [HttpDelete("photos/albums")]
+        public async Task<IActionResult> DeletePhotoFromAlbum([FromBody] DeletePhotoFromAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
+
+        [SwaggerOperation(Summary = "USUWA ZDJĘCIE", Description = "description")]
+        [AllowAnonymous]
+        [HttpDelete("photos/{photoId}")]
+        public async Task<IActionResult> DeletePhoto([FromRoute] int photoId, [FromBody] DeletePhotoCommand command)
+        {
+            command.PhotoId = photoId;
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
     }
 }

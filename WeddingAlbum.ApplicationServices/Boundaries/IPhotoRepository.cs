@@ -9,5 +9,13 @@ namespace WeddingAlbum.ApplicationServices.Boundaries
         Task Add(Photo photo);
 
         Task Add(PhotoInAlbum photoInAlbum);
+
+        Task<PhotoInAlbum> GetPhotoFromAlbum(int photoId, int albumId);
+
+        void DeletePhotoFromAlbum(PhotoInAlbum photo);
+
+        Task<Photo> GetPhoto(int photoId);
+
+        void DeletePhoto(Photo photo);
     }
 }
