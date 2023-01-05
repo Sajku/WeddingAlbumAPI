@@ -23,9 +23,8 @@ namespace WeddingAlbum.Api.Controllers
         [SwaggerOperation(Summary = "ZWRACA ZDJĘCIA W ALBUMIE", Description = "description")]
         [AllowAnonymous]
         [HttpGet("albums/{albumId}/photos")]
-        public async Task<IActionResult> GetAlbumPhotos([FromRoute] int albumId, [FromQuery] GetAlbumPhotosParameter parameter)
+        public async Task<IActionResult> GetAlbumPhotos([FromRoute] GetAlbumPhotosParameter parameter)
         {
-            parameter.AlbumId = albumId;
             return Ok(await _queryDispatcher.Dispatch(parameter));
         }
 

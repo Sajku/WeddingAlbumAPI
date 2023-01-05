@@ -24,7 +24,7 @@ namespace WeddingAlbum.Api.Controllers
         [SwaggerOperation(Summary = "ZWRACA SZCZEGÓŁY EVENTU", Description = "description")]
         [AllowAnonymous]
         [HttpGet("events/{eventId}")]
-        public async Task<IActionResult> GetEventDetails([FromRoute] int eventId, [FromQuery] GetEventDetailsParameter parameter)
+        public async Task<IActionResult> GetEventDetails([FromRoute] GetEventDetailsParameter parameter)
         {
             parameter.EventId = eventId;
             return Ok(await _queryDispatcher.Dispatch(parameter));
@@ -42,7 +42,7 @@ namespace WeddingAlbum.Api.Controllers
         [SwaggerOperation(Summary = "ZWRACA WSZYSTKIE ZDJĘCIA W EVENCIE", Description = "description")]
         [AllowAnonymous]
         [HttpGet("events/{eventId}/photos")]
-        public async Task<IActionResult> GetEventPhotos([FromRoute] int eventId, [FromQuery] GetEventPhotosParameter parameter)
+        public async Task<IActionResult> GetEventPhotos([FromRoute] GetEventPhotosParameter parameter)
         {
             parameter.EventId = eventId;
             return Ok(await _queryDispatcher.Dispatch(parameter));

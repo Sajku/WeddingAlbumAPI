@@ -21,7 +21,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
 
         public async Task<List<UserEventDTO>> Handle(GetUserEventsParameter query)
         {
-            query.UserId = _currentUserService.UserId;
+            query.UserId ??= _currentUserService.UserId;
             return await _userQuery.GetUserEvents(query);
         }
     }

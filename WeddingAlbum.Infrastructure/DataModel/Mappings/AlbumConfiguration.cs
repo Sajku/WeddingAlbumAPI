@@ -20,8 +20,7 @@ namespace WeddingAlbum.Infrastructure.DataModel.Mappings
             builder
                 .HasOne(a => a.Photo)
                 .WithMany()
-                .HasForeignKey(a => a.MainPhotoId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(a => a.MainPhotoId);
 
             builder
                 .HasOne(a => a.Event)

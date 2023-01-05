@@ -21,7 +21,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
 
         public async Task<List<UserAlbumInEventDTO>> Handle(GetUserFavouriteAlbumsInEventParameter query)
         {
-            query.UserId = _currentUserService.UserId;
+            query.UserId ??= _currentUserService.UserId;
             return await _userQuery.GetUserFavouriteAlbumsInEvent(query);
         }
     }

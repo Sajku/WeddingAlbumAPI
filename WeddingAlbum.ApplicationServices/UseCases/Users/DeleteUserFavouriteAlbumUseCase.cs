@@ -22,7 +22,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Users
 
         public async Task Handle(DeleteUserFavouriteAlbumCommand command)
         {
-            command.UserId = _currentUserService.UserId;
+            command.UserId ??= _currentUserService.UserId;
             var album = await _userRepository.GetUserFavouriteAlbum(command.UserId, command.AlbumId);
             _userRepository.DeleteUserFavouriteAlbum(album);
             await _unitOfWork.Save();
