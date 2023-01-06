@@ -23,9 +23,8 @@ namespace WeddingAlbum.Api.Controllers
         [SwaggerOperation(Summary = "ZWRACA SZCZEGÓŁY ZDJĘCIA", Description = "description")]
         [AllowAnonymous]
         [HttpGet("photos/{photoId}")]
-        public async Task<IActionResult> GetPhotoDetails([FromRoute] int photoId, [FromQuery] GetPhotoDetailsParameter parameter)
+        public async Task<IActionResult> GetPhotoDetails([FromRoute] GetPhotoDetailsParameter parameter)
         {
-            parameter.PhotoId = photoId;
             var response = await _queryDispatcher.Dispatch(parameter);
             return Ok(response);
         }
@@ -33,9 +32,8 @@ namespace WeddingAlbum.Api.Controllers
         [SwaggerOperation(Summary = "ZWRACA KOMENTARZE ZDJĘCIA", Description = "description")]
         [AllowAnonymous]
         [HttpGet("photos/{photoId}/comments")]
-        public async Task<IActionResult> GetPhotoComments([FromRoute] int photoId, [FromQuery] GetPhotoCommentsParameter parameter)
+        public async Task<IActionResult> GetPhotoComments([FromRoute] GetPhotoCommentsParameter parameter)
         {
-            parameter.PhotoId = photoId;
             var response = await _queryDispatcher.Dispatch(parameter);
             return Ok(response);
         }
@@ -53,6 +51,24 @@ namespace WeddingAlbum.Api.Controllers
         [AllowAnonymous]
         [HttpPost("photos/albums")]
         public async Task<IActionResult> AddPhotoInAlbum([FromBody] AddPhotoInAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
+
+        [SwaggerOperation(Summary = "USUWA ZDJĘCIE Z ALBUMU", Description = "description")]
+        [AllowAnonymous]
+        [HttpDelete("photos/albums")]
+        public async Task<IActionResult> DeletePhotoFromAlbum([FromBody] DeletePhotoFromAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
+
+        [SwaggerOperation(Summary = "USUWA ZDJĘCIE", Description = "description")]
+        [AllowAnonymous]
+        [HttpDelete("photos/{photoId}")]
+        public async Task<IActionResult> DeletePhoto([FromRoute] DeletePhotoCommand command)
         {
             await _commandDispatcher.Dispatch(command);
             return Ok();

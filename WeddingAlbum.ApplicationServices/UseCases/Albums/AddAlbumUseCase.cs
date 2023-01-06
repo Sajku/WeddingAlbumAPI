@@ -28,10 +28,10 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Albums
 
         public async Task Handle(AddAlbumCommand command)
         {
-            string userId = _currentUserService.UserId;
+            command.UserId ??= _currentUserService.UserId;
 
             var album = new Album(
-                command.Name,
+                command.Name,       
                 command.IsPrivate,
                 command.UserId,
                 command.MainPhotoId,

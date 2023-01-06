@@ -15,19 +15,25 @@ namespace WeddingAlbum.Infrastructure.DataModel.Mappings
                 .HasOne(a => a.User)
                 .WithMany()
                 .HasForeignKey(a => a.UserId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasOne(a => a.Photo)
                 .WithMany()
                 .HasForeignKey(a => a.MainPhotoId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasOne(a => a.Event)
                 .WithMany()
                 .HasForeignKey(a => a.EventId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Property(a => a.MainPhotoId)
+                .IsRequired(false);
+
         }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeddingAlbum.Infrastructure.DataModel.Context;
 
@@ -11,9 +12,10 @@ using WeddingAlbum.Infrastructure.DataModel.Context;
 namespace WeddingAlbum.Infrastructure.Migrations
 {
     [DbContext(typeof(WeddingAlbumContext))]
-    partial class WeddingAlbumContextModelSnapshot : ModelSnapshot
+    [Migration("20230105221629_FixPhotoDeleting")]
+    partial class FixPhotoDeleting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,7 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.Property<bool>("IsPrivate")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MainPhotoId")
+                    b.Property<int>("MainPhotoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -266,12 +268,13 @@ namespace WeddingAlbum.Infrastructure.Migrations
                     b.HasOne("WeddingAlbum.Domain.Photos.Photo", "Photo")
                         .WithMany()
                         .HasForeignKey("MainPhotoId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("WeddingAlbum.Domain.Users.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Event");
 

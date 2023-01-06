@@ -23,9 +23,8 @@ namespace WeddingAlbum.Api.Controllers
         [SwaggerOperation(Summary = "ZWRACA ZDJĘCIA W ALBUMIE", Description = "description")]
         [AllowAnonymous]
         [HttpGet("albums/{albumId}/photos")]
-        public async Task<IActionResult> GetAlbumPhotos([FromRoute] int albumId, [FromQuery] GetAlbumPhotosParameter parameter)
+        public async Task<IActionResult> GetAlbumPhotos([FromRoute] GetAlbumPhotosParameter parameter)
         {
-            parameter.AlbumId = albumId;
             return Ok(await _queryDispatcher.Dispatch(parameter));
         }
 
@@ -33,6 +32,15 @@ namespace WeddingAlbum.Api.Controllers
         [AllowAnonymous]
         [HttpPost("albums")]
         public async Task<IActionResult> AddAlbum([FromBody] AddAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
+
+        [SwaggerOperation(Summary = "USUWA ALBUM", Description = "description")]
+        [AllowAnonymous]
+        [HttpDelete("albums/{albumId}")]
+        public async Task<IActionResult> DeleteAlbum([FromRoute] DeleteAlbumCommand command)
         {
             await _commandDispatcher.Dispatch(command);
             return Ok();

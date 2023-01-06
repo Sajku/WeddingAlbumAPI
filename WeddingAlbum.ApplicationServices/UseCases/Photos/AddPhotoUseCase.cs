@@ -23,7 +23,7 @@ namespace WeddingAlbum.ApplicationServices.UseCases.Photos
 
         public async Task Handle(AddPhotoCommand command)
         {
-            string userId = _currentUserService.UserId;
+            command.UserId ??= _currentUserService.UserId;
 
             var photo = new Photo(
                 command.Base64,
