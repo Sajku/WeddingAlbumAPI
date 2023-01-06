@@ -36,5 +36,14 @@ namespace WeddingAlbum.Api.Controllers
             await _commandDispatcher.Dispatch(command);
             return Ok();
         }
+
+        [SwaggerOperation(Summary = "USUWA ALBUM", Description = "description")]
+        [AllowAnonymous]
+        [HttpDelete("albums/{albumId}")]
+        public async Task<IActionResult> DeleteAlbum([FromRoute] DeleteAlbumCommand command)
+        {
+            await _commandDispatcher.Dispatch(command);
+            return Ok();
+        }
     }
 }

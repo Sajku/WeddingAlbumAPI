@@ -2,8 +2,8 @@
 
 namespace WeddingAlbum.PublishedLanguage.Commands
 {
-    public class DeletePhotoCommand : ICommand
+    public class DeleteAlbumCommand : ICommand
     {
-        public int PhotoId { get; set; }
+        public int AlbumId { get; set; }
     }
 }

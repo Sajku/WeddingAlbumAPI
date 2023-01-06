@@ -26,7 +26,6 @@ namespace WeddingAlbum.Api.Controllers
         [HttpGet("events/{eventId}")]
         public async Task<IActionResult> GetEventDetails([FromRoute] GetEventDetailsParameter parameter)
         {
-            parameter.EventId = eventId;
             return Ok(await _queryDispatcher.Dispatch(parameter));
         }
 
@@ -44,7 +43,6 @@ namespace WeddingAlbum.Api.Controllers
         [HttpGet("events/{eventId}/photos")]
         public async Task<IActionResult> GetEventPhotos([FromRoute] GetEventPhotosParameter parameter)
         {
-            parameter.EventId = eventId;
             return Ok(await _queryDispatcher.Dispatch(parameter));
         }
 

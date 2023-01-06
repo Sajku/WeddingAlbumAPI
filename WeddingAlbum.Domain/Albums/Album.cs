@@ -10,13 +10,13 @@ namespace WeddingAlbum.Domain.Albums
         public string Name { get; set; }
         public bool IsPrivate { get; set; }
         public string UserId { get; set; }
-        public int MainPhotoId { get; set; }
+        public int? MainPhotoId { get; set; }
         public int EventId { get; set; }
         public User User { get; set; }
         public Photo Photo { get; set; }
         public Event Event { get; set; }
 
-        public Album(string name, bool isPrivate, string userId, int mainPhotoId, int eventId)
+        public Album(string name, bool isPrivate, string userId, int? mainPhotoId, int eventId)
         {
             Name = name;
             IsPrivate = isPrivate;
